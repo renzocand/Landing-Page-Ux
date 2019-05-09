@@ -47,7 +47,7 @@
     <script>
 
         let inicio = () => {
-            fetch('http://localhost:3000/api/usuarios')
+            fetch('https://landing-page-uxsimple.herokuapp.com/api/usuarios')
                 .then(data => data.json())
                 .then(data => {
                     console.log(data['usuarios']);

@@ -76,7 +76,7 @@ form.addEventListener('submit', (e) => {
             }
         }
 
-        let URI = 'http://localhost:3000/api/usuarios'
+        let URI = 'https://landing-page-uxsimple.herokuapp.com/api/usuarios'
 
         fetch(URI, init)
             .then(res => res.json())
