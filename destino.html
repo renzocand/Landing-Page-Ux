@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Bienvenido</title>
+</head>
+
+<body>
+    <div class="container text-center my-5">
+        <h1>Carlos diseña esta pagina, la de destino</h1>
+        <p>Ya hice la parte del backend todos los que se registran se guardan en una base de datos</p>
+        <p class="h4">mira todos los guardados en esta tabla</p>
+    </div>
+    <div class="container">
+        <table class="table table-dark text-center">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Correo</th>
+                </tr>
+            </thead>
+            <tbody id="tablon">
+
+
+
+            </tbody>
+        </table>
+
+        <div class="regresar text-right">
+            <button onclick="regresar()" class="btn btn-danger">
+                Regresar
+            </button>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        let inicio = () => {
+            fetch('http://localhost:3000/api/usuarios')
+                .then(data => data.json())
+                .then(data => {
+                    console.log(data['usuarios']);
+                    for (let i = 1; i <= data['usuarios'].length; i++) {
+                        document.getElementById("tablon").innerHTML += `
+                        <tr >
+                        <th scope="row">${i}</th>
+                        <td>${data['usuarios'][i - 1].nombre}</td>
+                        <td>${data['usuarios'][i - 1].correo}</td>
+                        </tr>`
+                    }
+
+                })
+                .catch(err => console.log(err))
+        }
+        inicio()
+
+        let regresar = () => {
+            location.href = "./index.html";
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
